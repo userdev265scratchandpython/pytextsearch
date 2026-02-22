@@ -52,4 +52,4 @@ Selling this software, a fork of it or a copy of it is prohibited.
 ---
 
 ## Documentation
-[documentation]("docs/default.md")
+[documentation]("./docs/default.md")
