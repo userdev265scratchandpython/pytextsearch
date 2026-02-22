@@ -48,3 +48,8 @@ Selling this software, a fork of it or a copy of it is prohibited.
    3. approver  
    4. person who made the pull/push request
 - If file is too big, please start writing to another file.
+
+---
+
+## Documentation
+[documentation]("docs/default.md")
