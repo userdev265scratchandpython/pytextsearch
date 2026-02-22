@@ -18,6 +18,7 @@ Selling this software, a fork of it or a copy of it is prohibited.
 ## :warning: Project current informations(read before using)
 - Currently uses an input file and doesn't support command line arguments. STDIN and command-line arguments like grep are planned for future updates.
 - Currently in early phase, this tool is not yet production ready.
+- Currently, And is not functional due to removal of it before publication due to being broken.
 
 ---
 
