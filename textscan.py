@@ -45,8 +45,10 @@ try:
             if I.split("::")[0] == ver:
                 if I.split("::")[1] == script_hash:
                     print("Legitimate")
+                    break
                 else:
                     print("Illegitimate")
+                    break
             else:
                 if I == versinfo[len(versinfo)-1]:
                     print("Illegitimate/Unregistered, please get the latest version from the official repository")
