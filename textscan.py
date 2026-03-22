@@ -1,5 +1,5 @@
 # DO NOT EDIT LINE BELOW UNLESS MAKING UPDATE
-# v::1.0.0
+# v::1.0.1l
 # DO NOT EDIT LINE ABOVE UNLESS MAKING UPDATE
 # global OR, per-group AND
 # Will this code work even if it's ugly?
@@ -59,9 +59,13 @@ file = input("File < ")
 pattern = input("keyword(semicolons for or, ampersand for and, any of the two to separate) < ").split(";")
 with open(file, "r", encoding="utf-8", errors="ignore") as f:
     for I in f.read().split("\n"):
-        for Y in pattern:
-            if not I in found:
-                if Y.lower() in I.lower():
+        if not I in found:
+            for Y in pattern:
+                badand = len(Y.split("&"))
+                for Z in Y.split("&"):
+                    if Z.lower() in I.lower():
+                        badand -= 1
+                if badand == 0:
                     found.append(I)
 print("found matches :")
 if len(found) > 0:
