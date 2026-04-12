@@ -1,4 +1,7 @@
+import builtins
 linesprinted = 0
+original_print = builtins.print
+original_input = builtins.input
 def printme(*args, **kwargs):
     global linesprinted
     linesprinted += 1

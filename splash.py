@@ -23,13 +23,13 @@ def ss(manualclear=0, delay=5, color=False):
 Welcome to the WINST project's first tool, pytextsearch""".replace("#", "@").replace(";", "▓▓").replace(":", "▓").replace("@", " ")
         else:
             splash = """This project is part of
-[red];;;;;;;;;:#▒;;#▒#▒;#▒:############▒:;;;;;;;;;;;;[/red]
+[green];;;;;;;;;:#▒;;#▒#▒;#▒:############▒:;;;;;;;;;;;;[/green]
 [green];;;;;;;;;:#▒:#▒:;##▒:#▒#▒:;;;#▒;;;;;;;;;;;;;;[/green]
-[blue];;;;;;;;;::#▒#▒:#▒#▒#▒#▒#▒;:;;#▒;;;;;;;;;;;;;;[/blue]
-[cyan];;;;;;;;;::#▒#▒:#▒#▒#▒#▒:###▒;;#▒the:WINST:project:;;;;;[/cyan]
-[yellow];;;;;;;;;::#▒#▒:#▒#▒#▒#▒;;#▒:;#▒;;;;;;;;;;;;;;[/yellow]
-[purple];;;;;;;;;::#▒#▒:#▒#▒:##▒;;#▒:;#▒;;;;;;;;;;;;;;[/purple]
-[brown];;;;;;;;;:;#▒##▒##▒;######▒;;#▒;;;;;;;;;;;;;;[/brown]
+[green];;;;;;;;;::#▒#▒:#▒#▒#▒#▒#▒;:;;#▒;;;;;;;;;;;;;;[/green]
+[green];;;;;;;;;::#▒#▒:#▒#▒#▒#▒:###▒;;#▒the:WINST:project:;;;;;[/green]
+[green];;;;;;;;;::#▒#▒:#▒#▒#▒#▒;;#▒:;#▒;;;;;;;;;;;;;;[/green]
+[green];;;;;;;;;::#▒#▒:#▒#▒:##▒;;#▒:;#▒;;;;;;;;;;;;;;[/green]
+[green];;;;;;;;;:;#▒##▒##▒;######▒;;#▒;;;;;;;;;;;;;;[/green]
 Welcome to the WINST project's first tool, pytextsearch""".replace("#", "@").replace(";", "▓▓").replace(":", "▓").replace("@", " ")
         for I in splash.split("\n"):
             printme(I)

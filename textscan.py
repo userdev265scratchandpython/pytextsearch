@@ -32,7 +32,7 @@ print(f"[cyan]Version : {ver}[/cyan]")
 host = "raw.githubusercontent.com"
 path = "/userdev265scratchandpython/pytextsearch/refs/heads/main/versions.txt"
 versinfo = ""
-hashes = ["d05763dcca2661c74292633843e1098ca24f150557cd22e1257e9431f7cf8d40", "b0558b0e849e08540718776624a3152cd438a6b19c9cbc557f288825b4f85b41"]
+hashes = ["9d6b9e304282f3ae4e0f310ef0361950cca7a465e24e6166cfafb24b632628fa", "279db3f1c8e549770a1f2598431b1a8792394154adcde5b1a35ceac87c928211"]
 if "0afc74a81a51b7b0d8c79ba3144ad82fedd00c69e60e2ac45afb2199ecff0a47" != hashlib.sha256(bytes(path.encode())).hexdigest():
     print("[red]This application has been modified and will not work under any circumpstances. Please delete this from your computer and report this software online. This software is PyTextSearch by Userdev265scratchandpython. If you saw this message online and can communicate with me, please do it as soon as possible.[/red]")
     exit(255)
