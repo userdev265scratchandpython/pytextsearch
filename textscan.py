@@ -55,6 +55,21 @@ except Exception as e:
     print(f"[red]Error connecting to server: {e}[/red]")
 # --phrase
 try:
+    from cryptography.hazmat.primitives import serialization
+    from cryptography.hazmat.primitives.asymmetric.ed25519 import Ed25519PublicKey
+    with open("public_key.pem", "rb") as f:
+        public_key = serialization.load_pem_public_key(f.read())
+    with open("versions.txt", "rb") as f:
+        data = f.read()
+    with open("versions.sig", "rb") as f:
+        signature = f.read()
+
+    try:
+        public_key.verify(signature, data)
+        print("[green]VERSIONS FILE LEGIT[/green]")
+    except:
+        print("[red]TAMPERED VERSIONS FILE[/red]")
+        exit()
     go, sphash = splash.m095(hashes)
     if go == "stop":
         print("[red]SPLASH file check failed[/red]")
