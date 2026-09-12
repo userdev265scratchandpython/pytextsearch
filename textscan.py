@@ -1,5 +1,5 @@
 # DO NOT EDIT LINE BELOW UNLESS MAKING UPDATE
-# v::1.0.2s
+# v::1.0.2P
 # DO NOT EDIT LINE ABOVE UNLESS MAKING UPDATE
 # global OR, per-group AND
 # Will this code work even if it's ugly?
@@ -127,7 +127,7 @@ found = []
 file = input("File ")
 pattern = input("keyword(semicolons for or, ampersand for and, any of the two to separate) ").split(";")
 try:
-    with open(file, "r", encoding="utf-8", errors="ignore") as f:
+    with open(file.strip("'"), "r", encoding="utf-8", errors="ignore") as f:
         for I in f.read().split("\n"):
             if not I in found:
                 for Y in pattern:
