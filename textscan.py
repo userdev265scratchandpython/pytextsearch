@@ -23,8 +23,7 @@ with open(script_file, "rb") as f:
     script_hash = hashlib.sha256(script_bytes).hexdigest()
 print(f"[cyan]Script hash: {script_hash}[/cyan]")
 with open(script_file, "r") as f:
-    contents = f.read()
-    lines = contents.split("\n")
+    lines = f.read().split("\n")
     verline = lines[1] # 2nd line, 1st line has ID of 0
     ver = verline.split("v::")[1] # Version
 print(f"[cyan]Version : {ver}[/cyan]")
@@ -63,6 +62,7 @@ try:
         public_key = serialization.load_pem_public_key(f.read())
     with open("versions.txt", "rb") as f:
         data = f.read()
+        contents = data.decode()
     with open("versions.sig", "rb") as f:
         signature = f.read()
 
