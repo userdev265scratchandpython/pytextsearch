@@ -1,5 +1,5 @@
 # DO NOT EDIT LINE BELOW UNLESS MAKING UPDATE
-# v::1.0.2P
+# v::1.0.2l
 # DO NOT EDIT LINE ABOVE UNLESS MAKING UPDATE
 # global OR, per-group AND
 # Will this code work even if it's ugly?
@@ -137,6 +137,8 @@ try:
                             badand -= 1
                     if badand == 0:
                         found.append(I)
+except FileNotFoundError:
+    pass
 except Exception as e:
     print(f"[red]An error occured : {e}[/red]")
 print("found matches :")
