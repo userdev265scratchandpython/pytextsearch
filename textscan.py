@@ -1,5 +1,5 @@
 # DO NOT EDIT LINE BELOW UNLESS MAKING UPDATE
-# v::1.0.2f
+# v::1.0.2e
 # DO NOT EDIT LINE ABOVE UNLESS MAKING UPDATE
 # global OR, per-group AND
 # Will this code work even if it's ugly?
