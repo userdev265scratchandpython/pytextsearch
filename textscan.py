@@ -45,6 +45,7 @@ try:
     if response.status == 200:
         # Read the content and save to a file
         data = response.read().decode("utf-8")
+        downloadeddata = data
         versinfo = data.split("\n")
         print("[green]File downloaded successfully![/green]")
         conn.close()
@@ -109,11 +110,11 @@ try:
         for I in versinfo:
             if I.split("::")[0] == ver:
                 if I.split("::")[1] == script_hash:
-                    if contents in data:
+                    if contents in downloadeddata:
                         print("[green]Legitimate[/green]")
                         break
                     else:
-                        print("[red]Illegitimate[/red]")
+                        print("[red]Versions file does not match[/red]")
                         exit(1)
                         break
                 else:
