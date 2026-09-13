@@ -23,7 +23,8 @@ with open(script_file, "rb") as f:
     script_hash = hashlib.sha256(script_bytes).hexdigest()
 print(f"[cyan]Script hash: {script_hash}[/cyan]")
 with open(script_file, "r") as f:
-    lines = f.read().split("\n")
+    contents = f.read()
+    lines = contents.split("\n")
     verline = lines[1] # 2nd line, 1st line has ID of 0
     ver = verline.split("v::")[1] # Version
 print(f"[cyan]Version : {ver}[/cyan]")
@@ -108,8 +109,13 @@ try:
         for I in versinfo:
             if I.split("::")[0] == ver:
                 if I.split("::")[1] == script_hash:
-                    print("[green]Legitimate[/green]")
-                    break
+                    if contents in data:
+                        print("[green]Legitimate[/green]")
+                        break
+                    else:
+                        print("[red]Illegitimate[/red]")
+                        exit(1)
+                        break
                 else:
                     print("[red]Illegitimate[/red]")
                     exit(1)
