@@ -5,6 +5,8 @@ on:
     branches:
       - main
 
+  workflow_dispatch:
+
 permissions:
   contents: write
 
@@ -116,3 +118,48 @@ jobs:
           make_latest: true
           generate_release_notes: false
           files: release/*
+
+  cleanup-stale-tags:
+    needs: release
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          fetch-tags: true
+
+      - name: Remove stale build tags
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -e
+
+          echo "Getting tags associated with GitHub Releases..."
+
+          gh release list \
+            --limit 1000 \
+            --json tagName \
+            --jq '.[].tagName' > releases.txt
+
+          echo
+          echo "Released tags:"
+          cat releases.txt || true
+
+          echo
+          echo "Checking build-* tags..."
+
+          for tag in $(git tag -l 'build-*'); do
+            if grep -Fxq "$tag" releases.txt; then
+              echo "KEEP: $tag"
+            else
+              echo "DELETE: $tag"
+
+              git push origin --delete "$tag"
+              git tag -d "$tag"
+            fi
+          done
+
+          echo
+          echo "Stale tag cleanup complete."
