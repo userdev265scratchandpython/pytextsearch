@@ -46,48 +46,56 @@ jobs:
         run: |
           python -m nuitka --standalone --follow-imports --assume-yes-for-downloads --output-dir=build textscan.py
 
-      # Put EVERYTHING from the repository into the package.
-      # The .git directory and GitHub workflow files are excluded.
+      # Create the package OUTSIDE the repository so copying the repository
+      # cannot recursively copy the package directory into itself.
       - name: Create package directory
         shell: bash
         run: |
-          mkdir -p package
+          PACKAGE_DIR="$RUNNER_TEMP/pytextsearch-package"
 
-          cp -a . package/
+          rm -rf "$PACKAGE_DIR"
+          mkdir -p "$PACKAGE_DIR"
 
-          rm -rf package/.git
-          rm -rf package/.github
+          # Copy the entire repository.
+          # Only Git metadata and GitHub workflow files are excluded.
+          cp -a . "$PACKAGE_DIR/"
 
-          mkdir -p package/bin
+          rm -rf "$PACKAGE_DIR/.git"
+          rm -rf "$PACKAGE_DIR/.github"
 
-          cp -a build/textscan.dist/. package/bin/
+          # Add the complete Nuitka standalone build.
+          mkdir -p "$PACKAGE_DIR/bin"
+          cp -a build/textscan.dist/. "$PACKAGE_DIR/bin/"
+
+          echo "PACKAGE_DIR=$PACKAGE_DIR" >> "$GITHUB_ENV"
 
       - name: Package Linux
         if: matrix.name == 'linux'
         shell: bash
         run: |
-          tar -czf "${{ matrix.archive }}" package/
+          tar -czf "${{ matrix.archive }}" \
+            -C "$PACKAGE_DIR" .
 
       - name: Package macOS
         if: matrix.name == 'macos'
         shell: bash
         run: |
-          tar -czf "${{ matrix.archive }}" package/
+          tar -czf "${{ matrix.archive }}" \
+            -C "$PACKAGE_DIR" .
 
       - name: Package Windows
         if: matrix.name == 'windows'
         shell: pwsh
         run: |
-          Compress-Archive -Path package/* -DestinationPath "${{ matrix.archive }}"
+          Compress-Archive `
+            -Path "$env:PACKAGE_DIR\*" `
+            -DestinationPath "${{ matrix.archive }}"
 
       - name: Upload build
         uses: actions/upload-artifact@v4
         with:
           name: pytextsearch-${{ matrix.name }}
-          path: |
-            pytextsearch-linux.tar.gz
-            pytextsearch-windows.zip
-            pytextsearch-macos.tar.gz
+          path: ${{ matrix.archive }}
 
   release:
     needs: build
