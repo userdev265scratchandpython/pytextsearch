@@ -114,5 +114,5 @@ jobs:
           tag_name: build-${{ github.sha }}
           name: pytextsearch standalone
           make_latest: true
-          generate_release_notes: true
+          generate_release_notes: false
           files: release/*
