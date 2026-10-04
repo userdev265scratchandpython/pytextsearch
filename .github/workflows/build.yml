@@ -112,7 +112,7 @@ jobs:
         uses: softprops/action-gh-release@v2
         with:
           tag_name: build-${{ github.sha }}
-          name: pytextsearch build ${{ github.sha }}
-          prerelease: true
+          name: pytextsearch standalone
+          make_latest: true
           generate_release_notes: true
           files: release/*
