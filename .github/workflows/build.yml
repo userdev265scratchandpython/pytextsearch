@@ -60,14 +60,9 @@ jobs:
 
           # Copy the entire repository.
           # Only Git metadata and GitHub workflow files are excluded.
-          cp -a . "$PACKAGE_DIR/"
-
-          rm -rf "$PACKAGE_DIR/.git"
-          rm -rf "$PACKAGE_DIR/.github"
-
+          
           # Add the complete Nuitka standalone build.
-          mkdir -p "$PACKAGE_DIR/bin"
-          cp -a build/textscan.dist/. "$PACKAGE_DIR/bin/"
+          cp -a build/textscan.dist/. "$PACKAGE_DIR/"
 
           echo "PACKAGE_DIR=$PACKAGE_DIR" >> "$GITHUB_ENV"
 
