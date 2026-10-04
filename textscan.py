@@ -1,4 +1,4 @@
-found = []:
+found = []
 file = input("File << ")
 pattern = input("keyword(semicolons for or, ampersand for and, any of the two to separate) << ").split(";")
 try:
