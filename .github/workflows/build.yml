@@ -44,7 +44,7 @@ jobs:
 
       - name: Build with Nuitka
         run: |
-          python -m nuitka --standalone --follow-imports --output-dir=build textscan.py
+          python -m nuitka --standalone --follow-imports --assume-yes-for-downloads --output-dir=build textscan.py
 
       # Put EVERYTHING from the repository into the package.
       # The .git directory and GitHub workflow files are excluded.
