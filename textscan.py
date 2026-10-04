@@ -1,6 +1,6 @@
 found = []
-file = input("File ")
-pattern = input("keyword(semicolons for or, ampersand for and, any of the two to separate) ").split(";")
+file = input("File << ")
+pattern = input("keyword(semicolons for or, ampersand for and, any of the two to separate) << ").split(";")
 try:
     with open(file.strip("'"), "r", encoding="utf-8", errors="ignore") as f:
         for I in f.read().split("\n"):
