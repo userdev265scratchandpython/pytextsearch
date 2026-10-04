@@ -1,3 +1,5 @@
+[![Build](https://img.shields.io/github/actions/workflow/status/userdev265scratchandpython/pytextsearch/build.yml?branch=main&label=build)](https://github.com/userdev265scratchandpython/pytextsearch/actions/workflows/build.yml) [![Issues](https://img.shields.io/github/issues/userdev265scratchandpython/pytextsearch)](https://github.com/userdev265scratchandpython/pytextsearch/issues)/[![Issues](https://img.shields.io/github/issues-raw/userdev265scratchandpython/pytextsearch)](https://github.com/userdev265scratchandpython/pytextsearch/issues)
+
 # pytextsearch
 
 This tool is built in python with minimal dependencies.
